@@ -1,0 +1,191 @@
+/**
+ * Copyright (c) 2019
+ *
+ * Convention Data Services - Programming Challenge
+ *
+ * @summary Supporting CSS
+ * @author Cary Briel <carybriel@gmail.com>
+ *
+ * Created at     : 2019-08-30
+ * Last modified  : 2019-09-03
+ */
+
+
+/*****************************************
+*
+*
+*  General
+*
+*
+*****************************************/
+
+body, html {
+    height: 100%;
+}
+
+/*****************************************
+*
+*
+*  Main container
+*
+*
+*****************************************/
+
+#main {
+    height:100%;
+}
+
+/*****************************************
+*
+*
+*  Header
+*
+*
+*****************************************/
+
+#header {
+    height: 50%;
+    background-image: url("/img/headerbg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 32px;
+}
+
+/*****************************************
+*
+*
+*  Form heading
+*
+*
+*****************************************/
+
+#heading {
+    text-align:center;
+    margin:16px;
+}
+
+/*****************************************
+*
+*
+*  Content row styles (contains .left & .sidebar)
+*
+*
+*****************************************/
+
+#content {
+}
+
+/*****************************************
+*
+*
+*  Left content area
+*
+*
+*****************************************/
+
+#left {
+}
+
+/*****************************************
+*
+*
+*  Sidebar
+*
+*
+*****************************************/
+
+#sidebar {
+    border-left:1px solid #ddd;
+}
+
+/*****************************************
+*
+*
+*  Footer
+*
+*
+*****************************************/
+
+#footer {
+    font-size: 18px;
+    font-weight: bold;
+    text-align:center;
+    padding:32px;
+    margin-top: 32px;
+    border-top: 1px solid #ddd;
+}
+
+/*****************************************
+*
+*
+*  Form fields
+*
+*
+*****************************************/
+
+/* Green success box which displays above form when all fields validate. */
+#all-fields-validate {
+    background-color: green;
+    color: white;
+    display: none;
+    padding: 16px;
+}
+
+/* Error text */
+.form-error { color:red; display:none; }
+
+/* Required field asterisks */
+.required { color:red; font-weight:bold; }
+
+/* Custom alert box used for Terms & Conditions. */
+.label-first-name,
+.label-last-name {
+    font-weight: bold;
+}
+.label-first-name,
+.label-last-name,
+.label-email {
+    font-size:14px;
+}
+.label-phone,
+.label-heard,
+.label-promo,
+.label-terms {
+    font-size:12px;
+}
+.label-email {
+    font-style: italic;
+}
+
+/*****************************************
+*
+*
+*  Custom Alert Box
+*
+*
+*****************************************/
+
+.terms-alert {
+    display:none;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+.terms-close {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.terms-close:hover {
+    text-decoration: underline;
+}

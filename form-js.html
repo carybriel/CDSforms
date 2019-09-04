@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!--
+* Copyright (c) 2019
+*
+* Convention Data Services - Programming Challenge
+*
+* @summary Business Form - JavaScript
+*
+* @author Cary Briel <carybriel@gmail.com>
+*
+* Created at     : 2019-08-30
+* Last modified  : 2019-09-02
+-->
+
+<html lang="en">
+<head>
+
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="css/form-js.css">
+
+    <!-- Import JavaScript -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/form-js.js"></script>
+
+    <title>Form - Javascript</title>
+
+</head>
+<body onload="onBodyLoaded()">
+
+    <!-- Bootstrap container
+         // Structure
+         <ROW>Page header</ROW>
+         <ROW><COL-12>Form heading text</COL></ROW>
+         <ROW>
+            <COL-SM>   // left content
+                <ROW>
+                    // Input fields repeated in the following format:
+                    <COL-SM-6>Label</COL>       // Input label
+                    <COL-SM-6>Input field</COL> // Input field
+                </ROW>
+            </COL>      // end left content
+            <COL-SM-3>  // sidebar
+            </COL>      // end sidebar
+         </ROW>
+         <ROW><COL-12>Page footer</COL></ROW>
+    -->
+    <div id="main" class="container-fluid">
+
+        <!-- Header -->
+        <div id="header" class="row"></div>
+
+        <!-- ROW - Form heading -->
+        <div id="heading" class="row">
+
+            <div class="col-12">
+                <h3>Contact Details</h3>
+            </div>
+
+        </div> <!--- End: Row - form heading -->
+
+        <!-- ROW - Left content & sidebar -->
+        <div id="content" class="row">
+
+            <!-- COL - Left content  -->
+            <div id="left" class="col-sm">
+
+                <!-- Form -->
+                <form method="post" onsubmit="return val_validateall(true);">
+
+                    <!-- ROW - Form fields -->
+                    <div class="row align-items-center">
+
+                        <!-- COLUMNS -->
+
+                        <!-- This element will display if all fields validate -->
+                        <div class="col-sm-6 text-sm-right"></div>
+                        <div class="col-sm-6">
+                            <div id="all-fields-validate">You have filled in all the fields correctly.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Required field help text -->
+                        <div class="col-sm-6 text-sm-right"></div>
+                        <div class="col-sm-6">
+                            Required fields are indicated with <span class="required">*</span>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- First name -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-first-name"
+                                   class="label-first-name">First Name</label> <span class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   id="input-first-name"
+                                   name="input-first-name"
+                                   maxlength="30"
+                                   onblur="setTimeout(() => val_input_firstname(), 100);" />
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+
+                        <!-- 2 columns -->
+                        <!-- First name error -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-firstname-blank">Please type your first name.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Last name -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-last-name"
+                                   class="label-last-name">Last Name</label> <span class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   id="input-last-name"
+                                   name="input-last-name"
+                                   maxlength="30"
+                                   onblur="setTimeout(() => val_input_lastname(), 100);" />
+
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Last name error -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-lastname-blank">Please type your last name.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Phone -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-phone"
+                                   class="label-phone">Phone</label> <span class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   id="input-phone"
+                                   name="input-phone"
+                                   maxlength="30"
+                                   onkeypress="return val_checknumeric(event)"
+                                   onblur="setTimeout(() => val_input_phone(), 100);" />
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Phone error -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-phone-blank">Please type your phone number.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Email -->
+
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-email"
+                                   class="label-email">Email</label> <span class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                id="input-email"
+                                name="input-email"
+                                maxlength="50"
+                                onblur="setTimeout(() => val_input_email(), 100);"
+                            />
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Email errors -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-email-blank">Please type your email address.</div>
+                            <div class="form-error" id="err-email-email">Please type a valid email address.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <div class="col-sm-6 text-sm-right"></div>
+                        <div class="col-sm-6">
+                            <small>This field is required in order to receive an email confirmation.</small>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Promo code -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-promo"
+                                   class="label-promo">Promo Code</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text"
+                                   id="input-promo"
+                                   name="input-promo"
+                                   maxlength="7"
+                                   onkeypress="return val_checkalphanumeric(event);"
+                                   onblur="setTimeout(() => val_input_promo(), 100);" />
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- How did you hear of Us? -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-heard"
+                                   class="label-heard">How did you hear of us?</label> <span style="display:inline" id="heard-required" class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <select id="input-heard"
+                                    name="input-heard"
+                                    onchange="setTimeout(() => val_input_heard(), 100); val_setdisplay('other-desc', this.value==='other'?'block':'none');"
+                                    onblur="setTimeout(() => val_input_heard(), 100);">
+                                <option value="unknown">Please choose...</option>
+                                <option value="social">Social Media</option>
+                                <option value="friend">From a friend</option>
+                                <option value="email">Email</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- How you heard error -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-heard-blank">Please tell us how you heard of us.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Other field -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Textarea to allow visitor to explain if 'Other' is selected
+                                 in the 'how heard..' dropdown. This is initially hidden.
+                                 Note: we're limiting # characters entered to 255 as specified in business logic
+                            -->
+                            <div id="other-desc" style="display:none;">
+                                <div class="form-group"> <!-- Bootstrap for class sizes textarea correctly on mobile -->
+                                    <label for="input-heard-other">Please specify:</label> <span id="other-required" class="required">*</span>
+                                    <br />
+                                    <textarea
+                                            class="form-control"
+                                            id="input-heard-other"
+                                            name="input-heard-other"
+                                            rows="5"
+                                            cols="40"
+                                            onkeypress="return this.value.length<255"
+                                            onblur="setTimeout(() => val_input_heardother(), 100);"></textarea>
+                                    <div class="form-error" id="err-other-blank">Please tell us how you heard of us.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Terms & Conditions
+                             Note: We're sending value of 'Y' as specified in business logic.
+                        -->
+                        <div class="col-sm-6 text-sm-right">
+                            <label for="input-terms" class="label-terms">
+                                <a href="javascript:void(0);"
+                                   onclick="val_setdisplay('terms-alert','block');">Accept Terms & Conditions</a></label> <span class="required">*</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="checkbox"
+                                   id="input-terms"
+                                   name="input-terms"
+                                   value="Y"
+                                   onchange="setTimeout(() => val_input_terms(), 100);"
+                                   onblur="setTimeout(() => val_input_terms(), 100);" />&nbsp;I agree to the terms and conditions of this event.
+
+                        </div>
+
+                        <!-- 2 columns -->
+                        <!-- Terms & Conditions error -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-error" id="err-terms-blank">Please accept the Terms & Conditions.</div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- Terms & Conditions custom alert box
+                             Hidden by default.
+                             Displayed if visitor clicks Accept Terms & Cond link
+                        -->
+                        <div class="col-sm-6 text-sm-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="terms-alert" class="terms-alert"><span class="terms-close">&times;</span>
+                                <ul>
+                                    <li>All cancellation requests must be received by March 1, 2022</li>
+                                    <li>All cancellation requests are subject to a $100 cancellation fee.</li>
+                                    <li>No one under the age of 16 will be allowed on the show floor.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Bootstrap Column Break -->
+                        <div class="w-100"></div>
+
+                        <!-- 2 columns -->
+                        <!-- Submit button -->
+                        <div class="col-sm-6 text-sm-right"></div>
+                        <div class="col-sm-6 pt-3">
+                            <input type="submit"
+                                   id="input-submit"
+                                   name="input-submit"
+                                   value="Submit" />
+                        </div>
+
+                    </div> <!-- / ROW - Form fields -->
+
+                </form> <!-- Form end -->
+
+            </div> <!-- / COL - left content area -->
+
+            <!-- COL - Sidebar -->
+            <div id="sidebar" class="col-sm-3 mt-3">Sidebar content</div> <!-- / COL - Sidebar -->
+
+        </div> <!--- / ROW - Left content and sidebar -->
+
+        <!-- ROW - Footer -->
+        <div class="row">
+
+            <!-- COL - Footer -->
+            <div id="footer" class="col-12">
+                For assistance please call <a href="tel:555-5555">555-5555</a> or email <a href="mailto:test@test.com">test@test.com</a>
+            </div> <!-- / COL - Footer-->
+
+        </div> <!--- / ROW - Footer -->
+
+    </div> <!-- / Bootstrap container -->
+
+    <!-- Bootstrap requirements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <title>Test - Example #2 fixed</title>
+    <style>
+        #container { padding: 32px; }
+        #Row_HandicapText { display: none; } /* Default to hidden. */
+        .required { border-color: red; }
+    </style>
+    <script>
+        $( document ).ready(function() {
+            $("#HandicapBtn").on("click", function (evt) {
+
+                if ($(this).prop("checked")) {
+                    $("[id^='Row_HandicapText']").show();
+                    $("#HandicapText").addClass("required");
+
+                } else {
+                    $("[id^='Row_HandicapText']").hide();
+                    $("#HandicapText").val("").removeClass("required");
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="container">
+    <label for="HandicapBtn">Check the box:</label><input type="checkbox" id="HandicapBtn" />
+    <label for="HandicapText">Test input field</label> <input id="HandicapText" type="text" />
+    <div id="Row_HandicapText">Example text.</div>
+</div>
+
+</body>
+</html>
